@@ -1,0 +1,99 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ising_learning_model"
+description = "A package for machine learning using the Ising model on a Quantum Annealer."
+readme = "README.md"
+authors = [
+    {name = "Ludwig Schmid", email = "ludwig.s.schmid@tum.de"}
+]
+keywords = ["Quantum Annealing", "Machine Learning", "Ising Model"]
+license = {file = "LICENSE"}
+version = "0.0.1"
+
+classifiers=[
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Natural Language :: English",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "pytorch",
+    "dwave-ocean-sdk",
+]
+
+[project.urls]
+Homepage = ""
+"Bug Tracker" = ""
+Documentation = ""
+
+
+[tool.black]
+line-length = 79
+
+[tool.mypy]
+python_version = "3.8"
+strict = true
+show_error_codes = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
+warn_unreachable = true
+explicit_package_bases = true
+
+[[tool.mypy.overrides]]
+module = ["dwave-ocean-sdk.*", "pytorch.*"]
+ignore_missing_imports = true
+
+
+[tool.pylint]
+master.py-version = "3.8"
+master.jobs = "0"
+reports.output-format = "colorized"
+similarities.ignore-imports = "yes"
+messages_control.enable = [
+    "useless-suppression",
+]
+messages_control.disable = [
+    "invalid-name",
+    "line-too-long",
+    "missing-module-docstring",
+    "no-member",
+    "protected-access",
+    "too-few-public-methods",
+    "too-many-arguments",
+    "too-many-branches",
+    "too-many-locals",
+    "too-many-statements",
+    "ungrouped-imports",
+    "wrong-import-order",
+    "wrong-import-position",
+]
+
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
